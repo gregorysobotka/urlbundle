@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+
+        var pageId = '{{pageId}}';
+
+        {{#if editConfig}}
+            var editConfig = {
+                eid : '{{eid}}',
+                bundleId : '{{bundleId}}'
+            };
+        {{/if}}
+
+    </script>
+  </head>
+
+  <body id="{{pageId}}">
+
+    <header>
+      <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+          <div class="navbar-header"><a href="/"><strong>UB | Url Bundle</strong></a></div>
+          <div class="navbar-right">
+              <a href="/create">Create</a> | <a href="/help">Help</a> | <a href="/api">API</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    {{{body}}}
+
+  </body>
+  <script src="/javascripts/core.min.js"></script>
+</html>

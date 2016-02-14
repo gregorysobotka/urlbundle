@@ -1,0 +1,32 @@
+<div id="bundle-container">
+
+    <h3>Bundle : {{bundleId}}</h3>
+
+    <form>
+        <div id="bundle-list">
+            {{#each bundleUrls}}
+
+                <div class="form-group">
+                     <label>Title and link</label>
+                     <input type="text" value="{{text}}" class="form-control" data-titleNumber="{{@key}}" placeholder="Url title"/>
+                     <input type="text" value="{{url}}" data-textNumber="{{@key}}" class="form-control"/>
+                    <p><button type="button" class="btn btn-danger delete">Delete</button></p>
+                </div>
+
+            {{else}}
+
+                <p>No urls present</p>
+
+            {{/each}}
+        </div>
+    </form>
+
+    <div class="form-group">
+        <button class="btn btn-primary form-control" id="add-url">Add entry</button>
+        <button class="btn btn-success form-control" id="">Update</button>
+    </div>
+
+</div>
+
+
+
