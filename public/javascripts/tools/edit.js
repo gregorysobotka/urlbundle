@@ -4,7 +4,9 @@ define(function(){
 
     publicMethods.config = {
         moduleId : '#bundle-container',
-        domElement : {}
+        messageId : '#edit-status',
+        eid : '',
+        bundleId : ''
     };
 
     publicMethods.requestBundleDetails = function(editConfig, callBackOverride){
@@ -14,16 +16,16 @@ define(function(){
             url: '/api/v1/getBundle/' + editConfig.bundleId,
             data: { eid : editConfig.eid },
             success: function(response){
-                typeof callBackOverride === 'undefined' ? publicMethods.handleRequest(response) : callBackOverride(response);
+                typeof callBackOverride === 'undefined' ? publicMethods.handleGetRequest(response) : callBackOverride(response);
             },
             error: function(response){
-                typeof callBackOverride === 'undefined' ? publicMethods.handleRequest(response) : callBackOverride(response);
+                typeof callBackOverride === 'undefined' ? publicMethods.handleGetRequest(response) : callBackOverride(response);
             }
         });
 
     };
 
-    publicMethods.handleRequest = function(response){
+    publicMethods.handleGetRequest = function(response){
 
         var bundleDetails = response.details;
 
@@ -31,7 +33,8 @@ define(function(){
 
             $('#edit-mount').html(edit({
                 bundleId: bundleDetails.title,
-                bundleUrls: bundleDetails.urls
+                viewUrl : '/b/'+bundleDetails.title,
+                bundleUrls: JSON.parse(bundleDetails.urls)
             }));
 
             //watch for dom actions related to module
@@ -39,6 +42,27 @@ define(function(){
 
         });
 
+    };
+
+    publicMethods.updateBundleDetails = function(urlBundle, callBackOverride){
+
+        //   /updateBundle
+        $.ajax({
+            type: "POST",
+            url: '/api/v1/updateBundle/' + publicMethods.config.bundleId,
+            data: { eid : publicMethods.config.eid, urlBundle : JSON.stringify(urlBundle) },
+            success: function(response){
+                typeof callBackOverride === 'undefined' ? publicMethods.handlePostRequest(response) : callBackOverride(response);
+            },
+            error: function(response){
+                typeof callBackOverride === 'undefined' ? publicMethods.handlePostRequest(response) : callBackOverride(response);
+            }
+        });
+
+    };
+
+    publicMethods.handlePostRequest = function(response){
+        console.log(response);
     };
 
     publicMethods.spy = function(){
@@ -55,20 +79,47 @@ define(function(){
         });
 
         // remove url click
-        $('body').on('click', this.config.moduleId + ' button.delete',function(section){
-            console.log(section);
+        $('body').on('click', publicMethods.config.moduleId + ' button.delete',function(section){
             $(this).parents('div.form-group:first').remove();
+        });
+
+        // Update form
+        $('body').on('click', publicMethods.config.moduleId + ' #update-url',function(section){
+
+            var bundleList = [];
+            $(publicMethods.config.moduleId).find('.bundle-group').each(function(count){
+
+                var url = $(this).find('.url-field').val();
+                var title = $(this).find('.title-field').val();
+                var text = $(this).find('.text-field').val();
+
+                bundleList[count] = {
+                    url : url,
+                    title : title,
+                    text : text
+                }
+
+            });
+
+            // Up down click
+
+            publicMethods.updateBundleDetails(bundleList);
+
         });
 
     };
 
     publicMethods.abortModule = function(){
-        //
+        //nny
     };
 
     publicMethods.init = function(){
+        // for now, editConfigis a global variable.
+        typeof pageConfig !== 'undefined' ? this.requestBundleDetails(pageConfig) : this.abortModule();
 
-        typeof editConfig !== 'undefined' ? this.requestBundleDetails(editConfig) : this.abortModule();
+        this.config.eid = pageConfig.eid;
+        this.config.bundleId = pageConfig.bundleId;
+
 
     };
 

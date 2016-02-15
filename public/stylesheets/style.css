@@ -83,6 +83,24 @@ header .navbar-header {
 .disabled {
   opacity: .5;
 }
+#editBundle .delete {
+  float: right;
+}
+.loading-icon {
+  display: block;
+  margin: 0 auto;
+  margin-top: 5em;
+}
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.clearfix:after {
+  clear: both;
+}
 html {
   height: 100%;
 }

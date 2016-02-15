@@ -1,6 +1,7 @@
-<div class="form-group">
+<div class="form-group bundle-group">
     <label>Title and link</label>
-    <input type="text" value="{{text}}" class="form-control" data-titleNumber="{{@key}}" placeholder="Url title"/>
-    <input type="text" value="{{url}}" data-textNumber="{{@key}}" class="form-control"/>
-    <p><button type="button" class="btn btn-danger delete">Delete</button></p>
+    <input type="text" value="{{text}}" class="form-control title-field" data-titleNumber="{{@key}}" placeholder="Url title" data-for="title"/>
+    <input type="text" value="{{url}}" data-textNumber="{{@key}}" class="form-control url-field" data-for="url" placeholder="http://"/>
+    <textarea class="form-control">{{text}}</textarea>
+    <button type="button" class="btn btn-danger delete">Delete</button>
 </div>

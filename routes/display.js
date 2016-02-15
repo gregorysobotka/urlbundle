@@ -13,7 +13,7 @@ router.get('/:bundleId', function(req, res, next) {
 
   if( typeof req.params.bundleId !== 'undefined' ) {
     var bundleId = req.params.bundleId;
-    res.render('bundleList', { title : 'Your bundle', pageId : 'individualBundle', bundleId : bundleId });
+    res.render('view', { title : 'Your bundle', pageId : 'viewBundle', bundleId : bundleId });
   } else {
     res.render('index', { title: 'Express' });
   }

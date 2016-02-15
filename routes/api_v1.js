@@ -24,8 +24,12 @@ router.get('/getBundle/:bundleId', function(req, res, next) {
             var collection = db.collection('bundles');
 
             collection.findOne({"bundleId": bundleId}, function (err, document) {
+
                 if (typeof document !== 'undefined' && document !== null) {
-                    res.json(document);
+                    res.json( {
+                        bundleId : document.bundleId,
+                        details : document.details
+                    });
                 } else {
                     res.json({"bundle":"empty"});
                 }
@@ -50,13 +54,47 @@ router.post('/createBundle', function(req, res, next) {
 
             collection.insert({"bundleId": bundleId, details : {
                 title : bundleId,
-                urls : [{title : '', url : 'http://'}]
+                urls : JSON.stringify([{title : 'Link name', url : 'http://urlbundle.net', text : 'Bundle notes...'}])
             }}, function (err, document) {
                 var response = (err === null) ? document : err;
                 res.send(response);
             });
 
         });
+    } else {
+        res.json({errorMsg : 'Empty bundle id'});
+    }
+
+});
+
+router.post('/updateBundle/:bundleId', function(req, res, next) {
+
+    if(typeof req.params.bundleId !== 'undefined') {
+
+        var bundleId = req.params.bundleId;
+        var eid = req.body.eid;
+        var urlBundle = req.body.urlBundle;
+
+        MongoClient.connect(mongoUrl, function (err, db) {
+
+            var collection = db.collection('bundles');
+
+            collection.findAndModify(
+                { "bundleId": bundleId },
+                [], // empty sort order param
+                {
+                    $set: { "details": {
+                        "title": bundleId,
+                        "urls": urlBundle
+                    }}
+                },
+                function (err, document) {
+
+                    var response = (err === null) ? document : err;
+                    res.send(response);
+                });
+
+            });
     } else {
         res.json({errorMsg : 'Empty bundle id'});
     }

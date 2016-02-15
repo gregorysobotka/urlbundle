@@ -17,6 +17,7 @@ module.exports = function(grunt) {
       all: {
         files: {
           'public/templates/compiled/create.js': 'public/templates/create.handlebars',
+          'public/templates/compiled/view.js': 'public/templates/view.handlebars',
           'public/templates/compiled/edit.js': 'public/templates/edit.handlebars'
         },
         options: {

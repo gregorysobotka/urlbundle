@@ -4,18 +4,8 @@
   <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script>
-
-        var pageId = '{{pageId}}';
-
-        {{#if editConfig}}
-            var editConfig = {
-                eid : '{{eid}}',
-                bundleId : '{{bundleId}}'
-            };
-        {{/if}}
-
-    </script>
+    <script> var pageConfig = { pageId : '{{pageId}}', eid : '{{eid}}', bundleId : '{{bundleId}}' }; </script>
+    <script src="/javascripts/core.min.js"></script>
   </head>
 
   <body id="{{pageId}}">
@@ -34,5 +24,4 @@
     {{{body}}}
 
   </body>
-  <script src="/javascripts/core.min.js"></script>
 </html>
