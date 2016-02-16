@@ -1,4 +1,4 @@
-#on deployment server only
+#This can be placed on deployment server to download and start application
 
 sudo apt-get updates
 sudo apt-get install git
@@ -10,9 +10,8 @@ git clone git@github.com:gregorysobotka/urlbundle.git
 
 
 #install app
-git pull
+cd urlbundle
 sudo npm install
-
 grunt
 
 #start app
