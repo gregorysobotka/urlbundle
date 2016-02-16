@@ -5,7 +5,7 @@ npm-debug.log*
 
 .idea
 
-config/config.js
+urlBundleApp/config/config.js
 
 # Runtime data
 pids

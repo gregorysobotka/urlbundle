@@ -8,12 +8,9 @@ sudo npm install pm2 -g
 
 git clone git@github.com:gregorysobotka/urlbundle.git
 
-
 #install app
-cd urlbundle
+cd urlBundleApp
 sudo npm install
-grunt
 
 #start app
 pm2 start bin/www
-
