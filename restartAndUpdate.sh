@@ -3,7 +3,7 @@
 cd urlBundleApp
 
 #update environment
-sudo apt-get updates
+sudo apt-get update
 
 #update app
 git pull

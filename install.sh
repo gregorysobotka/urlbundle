@@ -1,6 +1,6 @@
 #This can be placed on deployment server to download and start application
 
-sudo apt-get updates
+sudo apt-get update
 sudo apt-get install git
 
 #global installs

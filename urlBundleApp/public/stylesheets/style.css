@@ -27,6 +27,10 @@
   text-align: center;
   padding: .4em;
 }
+#home .brand-twin {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
 #home .main-screen {
   background: #000;
   height: 35em;
@@ -37,7 +41,7 @@
 #home .center-section {
   color: #fff;
   margin: 0 auto;
-  padding-top: 2em;
+  padding-top: 10em;
   width: 50%;
   text-align: center;
 }
