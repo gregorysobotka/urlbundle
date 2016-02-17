@@ -31,6 +31,14 @@
   padding-top: 2em;
   padding-bottom: 2em;
 }
+#home .brand-container {
+  background: #fff;
+}
+#home .brand-container img {
+  margin: 0 auto;
+  display: block;
+  margin-top: 1em;
+}
 #home .main-screen {
   background: #000;
   height: 35em;
@@ -41,16 +49,15 @@
 #home .center-section {
   color: #fff;
   margin: 0 auto;
-  padding-top: 10em;
   width: 50%;
   text-align: center;
+  display: none;
 }
-#home button {
+#home .center-section button {
   width: 50%;
   padding: 1em;
   display: block;
   margin: 0 auto;
-  margin-top: 1em;
   border: 0;
   background-color: #000;
   color: #fff;
@@ -104,6 +111,13 @@ header .navbar-header {
 }
 .clearfix:after {
   clear: both;
+}
+#footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: #222;
+  color: #fff;
 }
 html {
   height: 100%;

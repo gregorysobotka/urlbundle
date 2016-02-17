@@ -1,10 +1,10 @@
 define(function() {
 
     return {
-        create : ['tools/randomGenerator', 'tools/create'],
-        home : ['tools/randomBackground'],
-        editBundle : ['tools/edit'],
-        viewBundle : ['modules/viewBundle']
+        home :  { modules : ['modules/homePage'], subModules : ['subModules/randomBackground','subModules/homePageResponsive'] },
+        create : { modules : ['modules/create'], subModules : ['subModules/randomGenerator'] },
+        editBundle : { modules : ['modules/edit'] },
+        viewBundle : { modules : ['modules/viewBundle'] }
     };
 
 });

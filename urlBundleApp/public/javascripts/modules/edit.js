@@ -1,6 +1,6 @@
 define(function(){
 
-    var publicMethods = publicMethods || {};
+    var publicMethods = publicMethods || new module();
 
     publicMethods.config = {
         moduleId : '#bundle-container',

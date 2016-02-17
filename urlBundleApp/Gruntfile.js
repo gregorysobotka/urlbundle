@@ -50,7 +50,8 @@ module.exports = function(grunt) {
               'public/javascripts/lib/require.min.js',
               'public/javascripts/lib/jquery-1.12.0.js',
               'public/javascripts/requireConfig.js',
-              'public/javascripts/entry.js']
+              'public/javascripts/entry.js',
+              'public/javascripts/modules/module.js']
           }
         }
       },

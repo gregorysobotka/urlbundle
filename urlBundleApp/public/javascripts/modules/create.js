@@ -1,6 +1,6 @@
 define(function(){
 
-    var publicMethods = publicMethods || {};
+    var publicMethods = publicMethods || new module();
 
     publicMethods.watchForm = function(){
         var self = this;
@@ -45,6 +45,8 @@ define(function(){
     publicMethods.init = function(){
 
         this.watchForm();
+
+        this.loadSubModules();
 
     };
 
