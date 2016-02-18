@@ -4,9 +4,17 @@ define(function(){
 
     publicMethods.watchForm = function(){
         var self = this;
+
         $('#submit-create').click(function(){
             self.requestCreateBundle($('#bundleName').val());
         });
+
+    };
+
+    publicMethods.cleanInput = function(val){
+
+        return val.replace(/\W/g, '-');
+
     };
 
     publicMethods.requestCreateBundle = function(bundleId, callBackOverride){
@@ -14,7 +22,7 @@ define(function(){
          $.ajax({
             type: "POST",
             url: '/api/v1/createBundle',
-            data: {bundleId : bundleId},
+            data: {bundleId : publicMethods.cleanInput(bundleId)},
             success: function(response){
                 typeof callBackOverride === 'undefined' ? publicMethods.handleRequest(response) : callBackOverride(response);
             },
