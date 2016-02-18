@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+  var jsPath = 'public/javascripts';
+
   grunt.initConfig({
     jshint: {
       files: ['Gruntfile.js', 'public/javascripts/*.js','public/javascripts/collections/*.js','public/javascripts/models/*.js', 'public/javascripts/pages*.js', 'tests/**/*.js'],
@@ -47,11 +49,14 @@ module.exports = function(grunt) {
         dist: {
           files: {
             'public/javascripts/core.min.js': [
-              'public/javascripts/lib/require.min.js',
-              'public/javascripts/lib/jquery-1.12.0.js',
-              'public/javascripts/requireConfig.js',
-              'public/javascripts/entry.js',
-              'public/javascripts/modules/module.js']
+              jsPath+'/lib/require.min.js',
+              jsPath+'/lib/jquery-1.12.0.js',
+              jsPath+'/lib/pubSub.js',
+              jsPath+'/requireConfig.js',
+              jsPath+'/entry.js',
+              jsPath+'/modules/module.js',
+              jsPath+'/subModules/subModule.js'
+            ]
           }
         }
       },

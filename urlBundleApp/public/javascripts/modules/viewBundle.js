@@ -1,11 +1,11 @@
 define(function(){
 
-    var publicMethods = publicMethods || new module();
+    var publicMethods = publicMethods || new module('viewBundle');
 
-    publicMethods.config = {
+    publicMethods.extendConfig({
         moduleId : '#view-bundle',
         bundleId : ''
-    };
+    });
 
     publicMethods.requestBundleDetails = function(pageConfig, callBackOverride){
 

@@ -1,16 +1,15 @@
 define(function() {
 
-    var publicFunctions = {};
+    var publicFunctions = publicFunctions || new subModule('homePageResponsive');
 
-    publicFunctions.config = {
+    publicFunctions.extendConfig({
         mainScreen : {
             selector : '.main-screen',
             distanceFromTop : 0,
             heightDefault : 0,
             height : 0
         }
-    };
-
+    });
 
     publicFunctions.updateConfig = function(){
         publicFunctions.config.mainScreen.height = $(publicFunctions.config.mainScreen.selector).height();
@@ -45,11 +44,8 @@ define(function() {
     publicFunctions.init = function(){
 
        $(function(){
-
            publicFunctions.config.mainScreen.heightDefault = $(publicFunctions.config.mainScreen.selector).height();
            publicFunctions.spyDom();
-
-
        });
 
     };

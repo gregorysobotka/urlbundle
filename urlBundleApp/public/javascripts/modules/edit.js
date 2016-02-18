@@ -1,13 +1,13 @@
 define(function(){
 
-    var publicMethods = publicMethods || new module();
+    var publicMethods = publicMethods || new module('edit');
 
-    publicMethods.config = {
+    publicMethods.extendConfig({
         moduleId : '#bundle-container',
         messageId : '#edit-status',
         eid : '',
         bundleId : ''
-    };
+    });
 
     publicMethods.requestBundleDetails = function(editConfig, callBackOverride){
 

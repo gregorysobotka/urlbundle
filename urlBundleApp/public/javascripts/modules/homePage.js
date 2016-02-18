@@ -1,10 +1,6 @@
 define(function(){
 
-    var publicMethods = publicMethods || new module();
-
-    publicMethods.config = {
-
-    };
+    var publicMethods = publicMethods || new module('homePage');
 
     publicMethods.init = function(){
 

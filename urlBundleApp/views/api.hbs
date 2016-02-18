@@ -1,17 +1,30 @@
 <div class="row">
     <div class="container">
+        <div class="col-md-6">
+            <h3><strong>Current API Version : 1.0</strong></h3>
+            <h3>GET :</h3>
+            <code>
+                <h3>/api/[v#]/getBundle/[bundleId]</h3>
+            </code>
 
-        <h3>Current API Version : <strong>0.1</strong></h3>
 
-        <code>
-            <p><strong>GET :</strong></p>
-            <p>/api/v#/[getBundle/[bundleId]</p>
-            <p></p>
-        </code>
+            <h3>POST :</h3>
+            <code>
+                <h3>/api/[v#]/updateBundle/[bundleId]</h3>
+                <p><strong>Required post data :</strong> </br>{</br> eid : '3af4532', </br> urlBundle : [</br>{url : '', text : '', notes : ''}, </br> {url : '', text : '', notes : ''}</br>]}</p>
+            </code>
 
-        <code>
-            <p><strong>POST :</strong></p>
-            <p></p>
-        </code>
+            <code>
+                <h3>/api/[v#]/createBundle/</h3>
+                <p><strong>Required post data :</strong> { bundleId : '1932434f' }</p>
+
+            </code>
+
+
+        </div>
+        <div class="col-md-4">
+            <h3><strong>Details</strong></h3>
+            <p class="bg-danger">This (public) API is only enabled for anonymous bundles. A quick follow feature for UB will be authentication with google accounts. Eventually we hope to include full support (for updating bundles that are associated with user accounts and anonymous. </p>
+        </div>
     </div>
 </div>

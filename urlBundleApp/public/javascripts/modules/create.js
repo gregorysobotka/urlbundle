@@ -1,6 +1,6 @@
 define(function(){
 
-    var publicMethods = publicMethods || new module();
+    var publicMethods = publicMethods || new module('create');
 
     publicMethods.watchForm = function(){
         var self = this;

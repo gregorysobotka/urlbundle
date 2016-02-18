@@ -1,10 +1,10 @@
 define(['jquery'],function() {
 
-    var random = {};
+    var random = random || new subModule('randomGenerator');
 
-    random.config = {
+    random.extendConfig({
         clickClass : '.generate-random'
-    };
+    });
 
     random.generateNumber = function(){
         return Math.random().toString(36).substr(5, 8);

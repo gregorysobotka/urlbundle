@@ -1,22 +1,18 @@
 define(function(){
 
-    var publicMethods = publicMethods || {};
+    var publicMethods = publicMethods || new subModule('randomBackground');
 
     publicMethods.assignRandomBackground = function(){
+        $('#home .main-screen').addClass(this.createRandomBgClass());
+    };
 
-        var randomNumber = function(){
-            var max = 4, min = 1;
-            return Math.floor(Math.random()*(max-min+1)+min);
-        }();
-
-        $('#home .main-screen').addClass('bg'+randomNumber);
-
+    publicMethods.createRandomBgClass = function(){
+        var max = 4, min = 1;
+        return 'bg'+Math.floor(Math.random()*(max-min+1)+min);
     };
 
     publicMethods.init = function(){
-
         this.assignRandomBackground();
-
     };
 
     return publicMethods;

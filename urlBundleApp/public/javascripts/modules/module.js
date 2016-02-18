@@ -1,20 +1,31 @@
-function module(){
+function module(name){
+    this.config = {
+        name : name,
+        moduleId : '#'+name
+    };
     this.subModules = [];
+    this.subModulePaths = [];
 }
 
-module.prototype.registerSubModules = function(modules){
-    if(typeof modules !== 'undefined') {
-        for (var i = 0; i < modules.length; i++) {
-            this.subModules.push(modules[i]);
+$.extend(module.prototype,{
+    extendConfig : function(config){
+        $.extend(this.config, config);
+    },
+    registerSubModules : function(modules){
+        if(typeof modules !== 'undefined') {
+            for (var i = 0; i < modules.length; i++) {
+                this.subModulePaths.push(modules[i]);
+            }
+        }
+    },
+    loadSubModules : function(){
+        var subModules = this.subModulePaths;
+        var self = this;
+        for(var i =0; i<subModules.length; i++) {
+            require([subModules[i]],function(currentModule){
+                self.subModules.push(currentModule);
+                currentModule.init();
+            });
         }
     }
-};
-
-module.prototype.loadSubModules = function(){
-    var modules = this.subModules;
-    for(var i =0; i<modules.length; i++) {
-        require([modules[i]],function(module){
-           module.init();
-        });
-    }
-};
+});
