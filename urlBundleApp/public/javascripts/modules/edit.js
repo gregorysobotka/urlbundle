@@ -6,7 +6,8 @@ define(function(){
         moduleId : '#bundle-container',
         messageId : '#edit-status',
         eid : '',
-        bundleId : ''
+        bundleId : '',
+        bundleName : ''
     });
 
     publicMethods.requestBundleDetails = function(editConfig, callBackOverride){
@@ -28,12 +29,13 @@ define(function(){
     publicMethods.handleGetRequest = function(response){
 
         var bundleDetails = response.details;
+        var bundleName = publicMethods.config.bundleName = response.bundleName;
 
         require(['templates/edit'], function(edit) {
 
             $('#edit-mount').html(edit({
                 bundleId: bundleDetails.title,
-                bundleName: bundleDetails.bundleName,
+                bundleName: bundleName,
                 viewUrl : '/b/'+bundleDetails.title,
                 bundleUrls: JSON.parse(bundleDetails.urls)
             }));
@@ -51,7 +53,7 @@ define(function(){
         $.ajax({
             type: "POST",
             url: '/api/v1/updateBundle/' + publicMethods.config.bundleId,
-            data: { eid : publicMethods.config.eid, urlBundle : JSON.stringify(urlBundle) },
+            data: { eid : publicMethods.config.eid, bundleName : publicMethods.config.bundleName, urlBundle : JSON.stringify(urlBundle) },
             success: function(response){
                 typeof callBackOverride === 'undefined' ? publicMethods.handlePostRequest(response) : callBackOverride(response);
             },
@@ -63,7 +65,9 @@ define(function(){
     };
 
     publicMethods.handlePostRequest = function(response){
+        console.log(' * POST REQUEST RESPONSE *');
         console.log(response);
+        console.log(' * POST REQUEST RESPONSE *');
     };
 
     publicMethods.spy = function(){
@@ -102,12 +106,16 @@ define(function(){
 
             });
 
-            // Up down click
+            publicMethods.updateNonRequired();
 
             publicMethods.updateBundleDetails(bundleList);
 
         });
 
+    };
+
+    publicMethods.updateNonRequired = function(){
+        publicMethods.config.bundleName = $('#bundleName').val();
     };
 
     publicMethods.abortModule = function(){

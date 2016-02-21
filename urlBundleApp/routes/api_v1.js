@@ -28,6 +28,7 @@ router.get('/getBundle/:bundleId', function(req, res, next) {
                 if (typeof document !== 'undefined' && document !== null) {
                     res.json( {
                         bundleId : document.bundleId,
+                        bundleName : document.bundleName,
                         details : document.details
                     });
                 } else {
@@ -75,6 +76,7 @@ router.post('/updateBundle/:bundleId', function(req, res, next) {
         var bundleId = req.params.bundleId;
         var eid = req.body.eid;
         var urlBundle = req.body.urlBundle;
+        var bundleName = req.body.bundleName;
 
         MongoClient.connect(mongoUrl, function (err, db) {
 
@@ -84,7 +86,9 @@ router.post('/updateBundle/:bundleId', function(req, res, next) {
                 { "bundleId": bundleId },
                 [], // empty sort order param
                 {
-                    $set: { "details": {
+                    $set: {
+                        "bundleName" : bundleName,
+                        "details": {
                         "title": bundleId,
                         "urls": urlBundle
                     }}
