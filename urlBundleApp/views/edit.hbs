@@ -1,3 +1,6 @@
+
+{{> backgroundBlock bundleId=bundleId }}
+
 <div class="main-screen">
 
     <div id="main" class="container">
@@ -13,8 +16,11 @@
                 </div>
 
                 <div class="col-md-4">
-                    <p class="bg-danger">Warning : If you lose this link, you will no longer be able to edit this list.</p>
+
+                    <p class="bg-danger warning-message">Warning : If you lose this link, you will no longer be able to edit this list.</p>
+                    <p><a href="/b/{{bundleId}}" target="_blank"><button class="btn btn-success form-control" id="add-url">View bundle</button></a></p>
                     <div id="edit-status"></div>
+
                 </div>
 
             </div>

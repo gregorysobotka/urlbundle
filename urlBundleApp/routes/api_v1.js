@@ -54,6 +54,7 @@ router.post('/createBundle', function(req, res, next) {
 
             collection.insert({"bundleId": bundleId, details : {
                 title : bundleId,
+                bundleName : bundleId,
                 urls : JSON.stringify([{title : 'Link name', url : 'http://urlbundle.net', text : 'Bundle notes...'}])
             }}, function (err, document) {
                 var response = (err === null) ? document : err;

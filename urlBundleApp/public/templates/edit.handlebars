@@ -1,13 +1,13 @@
 <div id="bundle-container">
 
-    <h3>Bundle : {{bundleId}}</h3>
-
-    <p><a href="{{viewUrl}}" target="_blank">View bundle</a></p>
+    <label>Name / short description</label>
+    <p><input type="text" value="{{bundleName}}" class="form-control title-field" id="bundle-name"/></p> </br>
 
     <form>
         <div id="bundle-list">
-            {{#each bundleUrls}}
 
+            {{#each bundleUrls}}
+                <label>url w/ details</label>
                 <div class="form-group bundle-group clearfix">
 
                      <div class="left-container">
@@ -28,12 +28,13 @@
                 <p>No urls present</p>
 
             {{/each}}
+
         </div>
     </form>
 
-    <div class="form-group">
+    <div class="form-group button-actions">
         <button class="btn btn-primary form-control" id="add-url">Add entry</button>
-        <button class="btn btn-success form-control" id="update-url">Update</button>
+        <button class="btn btn-primary form-control" id="update-url">Update</button>
     </div>
 
 </div>

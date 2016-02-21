@@ -33,6 +33,7 @@ define(function(){
 
             $('#edit-mount').html(edit({
                 bundleId: bundleDetails.title,
+                bundleName: bundleDetails.bundleName,
                 viewUrl : '/b/'+bundleDetails.title,
                 bundleUrls: JSON.parse(bundleDetails.urls)
             }));
@@ -46,7 +47,7 @@ define(function(){
 
     publicMethods.updateBundleDetails = function(urlBundle, callBackOverride){
 
-        //   /updateBundle
+        //updateBundle
         $.ajax({
             type: "POST",
             url: '/api/v1/updateBundle/' + publicMethods.config.bundleId,
