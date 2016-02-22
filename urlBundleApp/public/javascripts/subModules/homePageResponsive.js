@@ -34,10 +34,10 @@ define(function() {
         publicFunctions.updateDom('');
         $('.center-section').show();
 
-        $(window).scroll(function() {
-            publicFunctions.updateConfig();
-            publicFunctions.updateDom();
-        });
+        //$(window).scroll(function() {
+        //    publicFunctions.updateConfig();
+        //    publicFunctions.updateDom();
+        //});
 
     };
 

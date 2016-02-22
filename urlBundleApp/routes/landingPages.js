@@ -11,11 +11,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/api', function(req, res, next) {
-    res.render('api', { title: 'Create bundle', pageId : 'api' });
+    res.render('api', { title: 'UB API', pageId : 'api' });
 });
 
-router.get('/help', function(req, res, next) {
-    res.render('help', { title: 'Create bundle', pageId : 'help' });
+router.get('/about', function(req, res, next) {
+    res.render('about', { title: 'About UB', pageId : 'about' });
 });
 
 

@@ -51,7 +51,6 @@
   margin: 0 auto;
   width: 50%;
   text-align: center;
-  display: none;
 }
 #home .center-section button {
   width: 50%;
@@ -59,12 +58,15 @@
   display: block;
   margin: 0 auto;
   border: 0;
-  background-color: #000;
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
 }
 header nav a {
   text-decoration: none;
   color: #fff;
+}
+header nav a:hover {
+  color: #585858;
 }
 header .navbar {
   max-height: 3em;
@@ -110,6 +112,9 @@ header .navbar-header {
 }
 body {
   padding-bottom: 2em;
+}
+a:hover {
+  text-decoration: none !important;
 }
 .loading-icon {
   display: block;
