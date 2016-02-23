@@ -79,17 +79,19 @@ define(function(){
 
             require(['partials/addBundle'], function(addBundle) {
                 thisModule.find('#bundle-list').append(addBundle);
+                events.publish('editListTrigger', { target : publicMethods.config.moduleId + ' #bundle-list .bundle-group' });
             });
 
         });
 
         // remove url click
-        $('body').on('click', publicMethods.config.moduleId + ' button.delete',function(section){
+        $('body').on('click', publicMethods.config.moduleId + ' button.delete',function(){
             $(this).parents('div.form-group:first').remove();
+            events.publish('editListTrigger', { target : publicMethods.config.moduleId + ' #bundle-list .bundle-group' });
         });
 
         // Update form
-        $('body').on('click', publicMethods.config.moduleId + ' #update-url',function(section){
+        $('body').on('click', publicMethods.config.moduleId + ' #update-url',function(){
 
             var bundleList = [];
             $(publicMethods.config.moduleId).find('.bundle-group').each(function(count){
@@ -112,6 +114,8 @@ define(function(){
 
         });
 
+        events.publish('editListTrigger', { target : publicMethods.config.moduleId + ' #bundle-list .bundle-group' });
+
     };
 
     publicMethods.updateNonRequired = function(){
@@ -128,6 +132,8 @@ define(function(){
 
         this.config.eid = pageConfig.eid;
         this.config.bundleId = pageConfig.bundleId;
+
+        this.loadSubModules();
 
 
     };

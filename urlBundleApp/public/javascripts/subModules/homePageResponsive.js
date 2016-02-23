@@ -19,7 +19,7 @@ define(function() {
     publicFunctions.updateDom = function(direction){
 
         var newheight = ( publicFunctions.config.mainScreen.height - publicFunctions.config.mainScreen.distanceFromTop > 60 ) ? publicFunctions.config.mainScreen.height - publicFunctions.config.mainScreen.distanceFromTop : 60;
-        $(publicFunctions.config.mainScreen.selector).height(newheight);
+        //$(publicFunctions.config.mainScreen.selector).height(newheight);
         $('.center-section').css('padding-top', ( newheight / 2 ) - ( $('.center-section').height() / 2 ) );
 
         if(newheight === 60) {

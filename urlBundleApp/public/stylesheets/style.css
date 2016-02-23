@@ -1,3 +1,7 @@
+.hover {
+  cursor: pointer;
+  cursor: hand;
+}
 #home {
   height: 100%;
   margin: 0;
@@ -10,10 +14,16 @@
   background: url('/images/bg2.jpg') no-repeat center center !important;
 }
 #home .bg3 {
-  background: url('/images/bg3.jpg') no-repeat center center !important;
+  background: url('/images/bg3.jpg') no-repeat center top !important;
 }
 #home .bg4 {
   background: url('/images/bg4.jpg') no-repeat center center !important;
+}
+#home .bg5 {
+  background: url('/images/bg5.jpg') no-repeat center bottom !important;
+}
+#home .bg6 {
+  background: url('/images/bg6.jpg') no-repeat center top !important;
 }
 #home .brand-row {
   background-color: #E0E0E0;
@@ -41,7 +51,7 @@
 }
 #home .main-screen {
   background: #000;
-  height: 35em;
+  height: 40%;
   width: 100%;
   position: relative;
   background-size: cover !important;
@@ -110,8 +120,35 @@ header .navbar-header {
   margin-top: .5em;
   height: 3em;
 }
+#editBundle .left-container {
+  width: 92%;
+  vertical-align: top;
+  display: inline-block;
+}
+#editBundle .left-container input {
+  margin-bottom: .5em;
+}
+#editBundle .right-container {
+  width: 6%;
+  vertical-align: top;
+  display: inline-block;
+}
+#editBundle .change-order {
+  background: #222;
+  color: #fff;
+  font-size: 1.24em;
+  padding: .4em;
+  border-radius: .2em;
+  margin-bottom: .2em;
+  cursor: pointer;
+  cursor: hand;
+}
+#editBundle textarea {
+  max-width: 100%;
+}
 body {
   padding-bottom: 2em;
+  min-width: 320px;
 }
 a:hover {
   text-decoration: none !important;

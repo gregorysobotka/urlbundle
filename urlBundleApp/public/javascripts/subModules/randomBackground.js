@@ -7,7 +7,7 @@ define(function(){
     };
 
     publicMethods.createRandomBgClass = function(){
-        var max = 4, min = 1;
+        var max = 6, min = 1;
         return 'bg'+Math.floor(Math.random()*(max-min+1)+min);
     };
 

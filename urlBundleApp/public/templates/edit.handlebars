@@ -8,7 +8,7 @@
 
             {{#each bundleUrls}}
                 <label>url w/ details</label>
-                <div class="form-group bundle-group clearfix">
+                <div class="form-group bundle-group clearfix" id="bundle-id-{{@key}}">
 
                      <div class="left-container">
                          <input type="text" value="{{title}}" class="form-control title-field" data-titleNumber="{{@key}}" placeholder="Url title" data-for="title"/>
@@ -17,10 +17,11 @@
                          <button type="button" class="btn btn-danger delete">Delete</button>
                      </div>
 
-                    <!--<div class="right-container">-->
-                        <!--<button>Up</button>-->
-                        <!--<button>Down</button>-->
-                    <!--</div>-->
+                    <div class="right-container">
+                        <span class="glyphicon glyphicon-chevron-up change-order move-up" aria-hidden="true" data-move="up"></span>
+                        <span class="glyphicon glyphicon-chevron-down change-order move-down" aria-hidden="true" data-move="down"></span>
+                    </div>
+
                 </div>
 
             {{else}}
