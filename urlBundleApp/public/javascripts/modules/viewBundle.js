@@ -30,6 +30,7 @@ define(function(){
 
             $(publicMethods.config.moduleId).html(view({
                 bundleId: bundleDetails.title,
+                bundleName : response.bundleName,
                 bundleUrls: JSON.parse(bundleDetails.urls)
             }));
 

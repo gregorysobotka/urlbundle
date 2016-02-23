@@ -106,6 +106,13 @@ header .navbar-header {
 .disabled {
   opacity: .5;
 }
+.module-row {
+  margin: 1.5em 0;
+}
+.module-row a {
+  font-size: 1.2em;
+  font-weight: 800;
+}
 #editBundle .delete {
   float: right;
   margin: .5em 0;

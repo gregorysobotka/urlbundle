@@ -1,30 +1,27 @@
+
 <div id="bundle-container">
 
-        <div class="col-md-6">
+    <div id="view-module">
 
-            <h3>Bundle : {{bundleId}}</h3>
+        {{#if bundleName}} <h2>{{bundleName}}</h2> {{/if}}
 
-            <ul class="list-group">
-                {{#each bundleUrls}}
-                    <li class="list-group-item">
+        {{#each bundleUrls}}
+            <div class="module-row">
 
-                        <a href="{{url}}" target="_blank">{{#if title}}{{title}}{{else}}{{url}}{{/if}}</a>
+                <a href="{{url}}" target="_blank">{{#if title}}{{title}}{{else}}{{url}}{{/if}}</a>
 
-                        <div><strong>Details :</strong> {{text}}</div>
+                <div>{{text}}</div>
 
-                    </li>
-                {{else}}
-                    <p>No urls present</p>
-                {{/each}}
-            </ul>
+            </div>
+        {{else}}
+            <p>No urls present</p>
+        {{/each}}
 
-        </div>
-
-        <div class="col-md-4">
-
-        </div>
+    </div>
 
 </div>
+
+
 
 
 
