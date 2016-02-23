@@ -6,6 +6,7 @@
         {{#if bundleName}} <h2>{{bundleName}}</h2> {{/if}}
 
         {{#each bundleUrls}}
+
             <div class="module-row">
 
                 <a href="{{url}}" target="_blank">{{#if title}}{{title}}{{else}}{{url}}{{/if}}</a>
@@ -13,8 +14,11 @@
                 <div>{{text}}</div>
 
             </div>
+
         {{else}}
+
             <p>No urls present</p>
+
         {{/each}}
 
     </div>

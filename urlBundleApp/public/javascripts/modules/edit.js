@@ -65,9 +65,28 @@ define(function(){
     };
 
     publicMethods.handlePostRequest = function(response){
+
         console.log(' * POST REQUEST RESPONSE *');
         console.log(response);
         console.log(' * POST REQUEST RESPONSE *');
+
+        var messageUpdate = "", messageClass = "error";
+
+        if( typeof response.ok !== 'undefined' && response.ok == 1 ){
+            messageUpdate = "Bundle successfully updated.";
+            messageClass = "text-success";
+        } else {
+            messageUpdate = "There may have been a problem updating your bundle.";
+            messageClass = "text-danger";
+        }
+
+        $(publicMethods.config.messageId).text(messageUpdate).addClass(messageClass);
+        $(publicMethods.config.messageId).show();
+
+        setTimeout(function() {
+            $(publicMethods.config.messageId).fadeOut('slow');
+        }, 5000);
+
     };
 
     publicMethods.spy = function(){
