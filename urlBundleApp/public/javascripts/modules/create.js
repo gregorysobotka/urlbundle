@@ -3,10 +3,37 @@ define(function(){
     var publicMethods = publicMethods || new module('create');
 
     publicMethods.watchForm = function(){
+
         var self = this;
 
         $('#submit-create').click(function(){
             self.requestCreateBundle($('#bundleName').val());
+        });
+
+        $("#bundleName").on("change keyup paste click", function(){
+            var newText = $(this).val();
+
+            if(newText.length >= 3){
+                publicMethods.isBundleAvailable(newText);
+            }
+        });
+
+    };
+
+    publicMethods.isBundleAvailable = function(bundleId){
+
+        $.get('/api/v1/getBundle/'+bundleId,function(response){
+
+            var message = 'Not Available';
+            var className = 'alert alert-danger';
+
+            if(typeof response.bundle !== 'undefined' && response.bundle == 'empty'){
+                message = 'Available';
+                className = 'alert alert-success';
+            }
+
+            $('#bundle-create-message').text(message).show().removeClass().addClass(className);
+
         });
 
     };
@@ -37,7 +64,7 @@ define(function(){
         if( typeof response.insertedCount !== 'undefined' && response.insertedCount > 0){
             publicMethods.loadUrlCreationForm(response);
         } else {
-            $('#bundle-create-message').html('<p class="btn-danger">There may have been a problem creating your bundle. Try a new name or generate a new random one.</p>');
+            $('#bundle-create-message').text('There may have been a problem creating your bundle. Try a new name or generate a new random one.').addClass('alert alert-danger');
         }
     };
 
