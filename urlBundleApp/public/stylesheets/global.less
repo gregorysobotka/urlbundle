@@ -66,22 +66,36 @@ body {
 // Buttons
 
 .half-button {
-  width:49.6% !important;
+  width:49% !important;
   display:inline-block !important;
   vertical-align:top !important;
 }
 
+#update-url {
+  width:99%;
+}
 
 
 // Forms
 
 .multi-url-wrapper {
   input {
-    width: 93%;
+    width: 92%;
     float:left;
   }
   .glyphicon {
     float:right;
     font-size: 1.5em;
+  }
+}
+
+
+// TODO : strategy around responsive layout
+
+@media (max-width: 28em) {
+  .multi-url-wrapper {
+    input {
+      width: 88%;
+    }
   }
 }
