@@ -1,7 +1,7 @@
-<div class="form-group bundle-group clearfix">
+<div class="form-group bundle-group clearfix" data-bundleType="single-bundle-url">
 
     <div class="left-container">
-        <input type="text" value="{{text}}" class="form-control title-field" data-titleNumber="{{@key}}" placeholder="Url title" data-for="title"/>
+        <input type="text" value="{{title}}" class="form-control title-field" data-titleNumber="{{@key}}" placeholder="Url title" data-for="title"/>
         <input type="text" value="{{url}}" data-textNumber="{{@key}}" class="form-control url-field" data-for="url" placeholder="http://"/>
         <textarea class="form-control text-field">{{text}}</textarea>
         <button type="button" class="btn btn-danger delete">Delete</button>
@@ -10,4 +10,5 @@
         <span class="glyphicon glyphicon-chevron-up change-order move-up" aria-hidden="true" data-move="up"></span>
         <span class="glyphicon glyphicon-chevron-down change-order move-down" aria-hidden="true" data-move="down"></span>
     </div>
+
 </div>

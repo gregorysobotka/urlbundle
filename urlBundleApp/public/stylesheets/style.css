@@ -201,6 +201,19 @@ a:hover {
   font-size: 2em;
   font-weight: 800;
 }
+.half-button {
+  width: 49.6% !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+}
+.multi-url-wrapper input {
+  width: 93%;
+  float: left;
+}
+.multi-url-wrapper .glyphicon {
+  float: right;
+  font-size: 1.5em;
+}
 html {
   height: 100%;
 }

@@ -26,12 +26,31 @@ define(function(){
 
         var bundleDetails = response.details;
 
-        require(['templates/view'], function(view) {
+        require(['templates/view', 'partials/viewMultiBundle', 'partials/viewBundle'], function(view, viewMultiBundle, viewBundle) {
+
+            var bundleDetails = response.details;
+            var bundleDetailsParsed = JSON.parse(bundleDetails.urls),
+                bundleHtml = [];
+
+            for(var i=0;i<bundleDetailsParsed.length;i++){
+
+                var bundle = bundleDetailsParsed[i], bundleTemplate = '';
+
+                if(bundle.bundleType === 'multi-bundle-url'){
+                    bundle.urls = JSON.parse(bundle.url);
+                    bundleTemplate = viewMultiBundle(bundle);
+                } else if(bundle.bundleType === 'single-bundle-url'){
+                    bundleTemplate = viewBundle(bundle);
+                }
+
+                bundleHtml = bundleHtml + bundleTemplate;
+
+            }
 
             $(publicMethods.config.moduleId).html(view({
                 bundleId: bundleDetails.title,
                 bundleName : response.bundleName,
-                bundleUrls: JSON.parse(bundleDetails.urls)
+                bundleHtml : bundleHtml
             }));
 
         });

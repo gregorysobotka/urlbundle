@@ -12,11 +12,12 @@ define(function(){
 
         $("#bundleName").on("change keyup paste click", function(){
             var newText = $(this).val();
-
             if(newText.length >= 3){
                 publicMethods.isBundleAvailable(newText);
             }
         });
+
+
 
     };
 

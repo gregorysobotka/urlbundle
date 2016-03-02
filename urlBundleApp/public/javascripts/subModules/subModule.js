@@ -1,7 +1,8 @@
 function subModule(name){
     this.config = {
         name : name,
-        configId : '#'+name
+        configId : '#'+name,
+        parent : {}
     };
 }
 

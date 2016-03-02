@@ -31,13 +31,31 @@ define(function(){
         var bundleDetails = response.details;
         var bundleName = publicMethods.config.bundleName = response.bundleName;
 
-        require(['templates/edit'], function(edit) {
+        require(['templates/edit', 'partials/addBundle', 'partials/addMultiBundle'], function(edit, addBundle, addMultiBundle) {
+
+            var bundleDetailsParsed = JSON.parse(bundleDetails.urls),
+                bundleHtml = [];
+
+            for(var i=0;i<bundleDetailsParsed.length;i++){
+
+                var bundle = bundleDetailsParsed[i], bundleTemplate = '';
+
+                if(bundle.bundleType === 'multi-bundle-url'){
+                    bundle.urls = JSON.parse(bundle.url);
+                    bundleTemplate = addMultiBundle(bundle);
+                } else if(bundle.bundleType === 'single-bundle-url'){
+                    bundleTemplate = addBundle(bundle);
+                }
+
+                bundleHtml.push(bundleTemplate);
+
+            }
 
             $('#edit-mount').html(edit({
                 bundleId: bundleDetails.title,
                 bundleName: bundleName,
                 viewUrl : '/b/'+bundleDetails.title,
-                bundleUrls: JSON.parse(bundleDetails.urls)
+                bundleUrls: bundleHtml
             }));
 
             //watch for dom actions related to module
@@ -103,6 +121,24 @@ define(function(){
 
         });
 
+        thisModule.find('#add-multi-url').click(function(){
+
+            require(['partials/addMultiBundle'], function(addBundle) {
+                thisModule.find('#bundle-list').append(addBundle);
+                events.publish('editListTrigger', { target : publicMethods.config.moduleId + ' #bundle-list .bundle-group' });
+            });
+
+        });
+
+        $('body').on('click','.add-single-url', function() {
+            var thisUrlSection = $(this).closest('.multi-url-container');
+            thisUrlSection.append('<div class="multi-url-wrapper"><input type="text" value="" data-textNumber="" class="form-control url-field" data-for="url" placeholder="http://"/><span class="glyphicon glyphicon-remove text-danger remove-single hover" ></span></div>');
+        });
+
+        $('body').on('click', '.remove-single', function(){
+            $(this).parent('.multi-url-wrapper').remove();
+        });
+
         // remove url click
         $('body').on('click', publicMethods.config.moduleId + ' button.delete',function(){
             $(this).parents('div.form-group:first').remove();
@@ -112,23 +148,41 @@ define(function(){
         // Update form
         $('body').on('click', publicMethods.config.moduleId + ' #update-url',function(){
 
-            var bundleList = [];
+            var bundleList = [], url;
             $(publicMethods.config.moduleId).find('.bundle-group').each(function(count){
 
-                var url = $(this).find('.url-field').val();
+                var bundleType = $(this).attr('data-bundleType');
+
+                if(bundleType === 'single-bundle-url'){
+                    url = $(this).find('.url-field').val();
+                } else if(bundleType === 'multi-bundle-url'){
+                    url = [];
+                    var childUrls = $(this).find('.multi-url-wrapper :input');
+                    if(childUrls.length > 0){
+                        for(var i=0; i<childUrls.length; i++){
+                            url.push($(childUrls[i]).val());
+                        }
+                    } else {
+                        url.push(childUrls[0]);
+                    }
+
+                    url = JSON.stringify(url);
+
+                }
+
                 var title = $(this).find('.title-field').val();
                 var text = $(this).find('.text-field').val();
 
                 bundleList[count] = {
-                    url : url,
                     title : title,
-                    text : text
+                    text : text,
+                    url : url,
+                    bundleType : bundleType
                 }
 
             });
 
             publicMethods.updateNonRequired();
-
             publicMethods.updateBundleDetails(bundleList);
 
         });

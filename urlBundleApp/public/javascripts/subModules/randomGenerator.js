@@ -1,30 +1,33 @@
 define(['jquery'],function() {
 
-    var random = random || new subModule('randomGenerator');
+    var publicMethods = publicMethods || new subModule('randomGenerator');
 
-    random.extendConfig({
-        clickClass : '.generate-random'
+    publicMethods.extendConfig({
+        clickClass : '.generate-random',
+        generatedNumber : 0
     });
 
-    random.generateNumber = function(){
+    publicMethods.generateNumber = function(){
         return Math.random().toString(36).substr(5, 8);
     };
 
-    random.updateDom = function(targetId){
-        $(targetId).val(this.generateNumber());
+    publicMethods.updateDom = function(targetId, randomNumber){
+        $(targetId).val(randomNumber);
     };
 
-    random.spyDom = function(){
+    publicMethods.spyDom = function(){
         var self = this;
         $(self.config.clickClass).click(function(){
-            self.updateDom($(this).data('target'));
+            var randomNumber = self.generateNumber();
+            self.config.parent.isBundleAvailable(randomNumber);
+            self.updateDom($(this).data('target'), randomNumber);
         });
     };
 
-    random.init = function(){
+    publicMethods.init = function(parent){
         this.spyDom();
     };
 
-    return random;
+    return publicMethods;
 
 });

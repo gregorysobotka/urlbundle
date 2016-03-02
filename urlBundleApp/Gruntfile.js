@@ -32,9 +32,10 @@ module.exports = function(grunt) {
       },
       some: {
         files: {
-          'public/templates/compiled/partials/addBundle.js': [
-            'public/templates/partials/addBundle.handlebars'
-          ]
+          'public/templates/compiled/partials/addBundle.js': 'public/templates/partials/addBundle.handlebars',
+          'public/templates/compiled/partials/addMultiBundle.js': 'public/templates/partials/addMultiBundle.handlebars',
+          'public/templates/compiled/partials/viewMultiBundle.js': 'public/templates/partials/viewMultiBundle.handlebars',
+          'public/templates/compiled/partials/viewBundle.js': 'public/templates/partials/viewBundle.handlebars'
         },
         options: {
           namespace: 'App.hb.partials',

@@ -10,25 +10,11 @@
 
             {{#each bundleUrls}}
 
-                <div class="form-group bundle-group clearfix" id="bundle-id-{{@key}}">
-
-                     <div class="left-container">
-                         <input type="text" value="{{title}}" class="form-control title-field" data-titleNumber="{{@key}}" placeholder="Url title" data-for="title"/>
-                         <input type="text" value="{{url}}" data-textNumber="{{@key}}" class="form-control url-field" data-for="url"/>
-                         <textarea class="form-control text-field">{{text}}</textarea>
-                         <button type="button" class="btn btn-danger delete">Delete</button>
-                     </div>
-
-                    <div class="right-container">
-                        <span class="glyphicon glyphicon-chevron-up change-order move-up" aria-hidden="true" data-move="up"></span>
-                        <span class="glyphicon glyphicon-chevron-down change-order move-down" aria-hidden="true" data-move="down"></span>
-                    </div>
-
-                </div>
+                {{{this}}}
 
             {{else}}
 
-                <p>No urls present</p>
+                //
 
             {{/each}}
 
@@ -36,7 +22,8 @@
     </form>
 
     <div class="form-group button-actions">
-        <button class="btn btn-primary form-control" id="add-url">Add entry</button>
+        <button class="btn btn-primary form-control half-button" id="add-url">+ Single url</button>
+        <button class="btn btn-primary form-control half-button" id="add-multi-url">+ Multiple url</button>
         <button class="btn btn-primary form-control" id="update-url">Update</button>
     </div>
 
